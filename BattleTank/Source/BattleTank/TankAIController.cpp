@@ -4,17 +4,6 @@
 #include "Engine/World.h"
 #include "GameFramework/PlayerController.h"
 
-
-ATank* ATankAIController::GetControlledTank() const
-{
-	return Cast<ATank>(GetPawn());
-}
-
-ATank * ATankAIController::GetPlayerTank() const
-{
-	return Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
-}
-
 void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
@@ -27,4 +16,14 @@ void ATankAIController::BeginPlay()
 		UE_LOG(LogTemp, Warning, TEXT("AIPlayerController: Player possessing: %s"), *(PlayerTank->GetName()));
 	}
 	UE_LOG(LogTemp, Warning, TEXT("AIPlayerController Begin Play"));
+}
+
+ATank* ATankAIController::GetControlledTank() const
+{
+	return Cast<ATank>(GetPawn());
+}
+
+ATank * ATankAIController::GetPlayerTank() const
+{
+	return Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
 }
